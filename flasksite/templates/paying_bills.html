@@ -1,0 +1,234 @@
+{% extends "layout.html" %}
+{% block content %}
+<h1>Module: Paying Bills</h1>
+
+<style type="text/css">
+    .tg  {border-collapse:collapse;border-spacing:0;}
+    .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+      font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+    .tg .tg-baqh{text-align:center;vertical-align:center}
+    .tg .tg-0lax{text-align:left;vertical-align:center}
+    </style>
+    <div style="overflow: auto; width: 1100px; height: 575px;">
+      <table class="table">
+      <colgroup>
+        <col style="width: 100px">
+        <col style="width: 60px">
+        <col style="width: 60px">
+        <col style="width: 60px">
+        <col style="width: 500px">
+      </colgroup>
+      <thead>
+        <tr>
+          <td class="tg-baqh" onclick="keeping_track()" id="keep_label_cell"><div class="unselectable" style="vertical-align: center;">Keeping Track of Bills</div></td>
+          <td class="tg-0pky" id="keep_label">1/3</td>
+          <th height=500px class="tg-0lax" rowspan="4" colspan="3" onclick="next()" style="vertical-align: top;"><div id="module_text" class="unselectable"> </div></th>
+        </tr>
+        <tr>
+          <td class="tg-baqh" onclick="types_bills()" id="types_bills_cell"><div class="unselectable">Types of Bills</div></td>
+          <td class="tg-0pky" id="types_bills_label">1/2</td>
+        </tr>
+        <tr>
+          <td class="tg-baqh" onclick="ways_pays_bill()" id="ways_pays_cell"><div class="unselectable">Ways to Pay a Bill</div></td>
+          <td class="tg-0pky" id="ways_pays_label">1/13</td>
+        </tr>
+        <tr>
+          <td class="tg-baqh" onclick="reduce_bill_expenses()" id="reduce_cell"><div class="unselectable">Reducing Your Bill Expenses</div></td>
+          <td class="tg-0pky" id="reduce_label">1/15</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <div class="unselectable">
+            <th class="tg-0lax" id="quiz" onclick="quiz()" style="background-color: grey;">Quiz</th>
+          </div>
+          <td class="tg-0pky"></td>
+          <td class="tg-0lax" onclick="backwards()"><button class="unselectable">Previous</button></td>
+          <td class="tg-0lax" onclick="next()"><button class="unselectable">Next</button></td>
+          <td class="tg-0lax">Progress Bar?</td>
+        </tr>
+      </tbody>
+      </table>
+  </div>
+    
+    <script>
+      let counter = [1,1,1,1];
+      let counterq = 0;
+      let finished = [0,0,0,0];
+      let which = 0;
+
+        function keeping_track() {
+          which = 1
+            var text = document.getElementById("module_text");
+            var label = document.getElementById("keep_label");
+            document.getElementById("keep_label_cell").style.backgroundColor = 'lightgreen';
+            document.getElementById("types_bills_cell").style.backgroundColor = 'white';
+            document.getElementById("ways_pays_cell").style.backgroundColor = 'white';
+            document.getElementById("reduce_cell").style.backgroundColor = 'white';
+
+            var content = ["Keep track of bills https://www.wikihow.com/Pay-Your-Bills", "https://www.investopedia.com/articles/pf/08/stop-paying-bills-late.asp", "https://www.thebalance.com/how-to-pay-your-bills-online-2385977", "Why it's important to keep track of bills Interest Rates/Late Payments Bill Cycle Every month? Every year?", "Bills due Beginning of month Middle of month End of month"]
+            text.innerHTML = content[counter[0]-1];
+            if (counter[0] > content.length){
+              counter[0] = content.length
+              document.getElementById("keep_label").style.backgroundColor = 'lightgreen';
+              types_bills()
+            }
+            label.innerHTML = `${counter[0]}/${content.length}`
+        }
+        function types_bills() {
+          which = 2
+            var text = document.getElementById("module_text");
+            var label = document.getElementById("types_bills_label");
+            document.getElementById("keep_label_cell").style.backgroundColor = 'white';
+            document.getElementById("types_bills_cell").style.backgroundColor = 'lightgreen';
+            document.getElementById("ways_pays_cell").style.backgroundColor = 'white';
+            document.getElementById("reduce_cell").style.backgroundColor = 'white';
+
+            var content = ["types content 1", "types content 2"]
+            text.innerHTML = content[counter[1]-1];
+            if (counter[1] > content.length){
+              counter[1] = content.length
+              document.getElementById("types_bills_label").style.backgroundColor = 'lightgreen';
+              ways_pays_bill()
+            }
+            label.innerHTML = `${counter[1]}/${content.length}`
+        }
+        function ways_pays_bill() {
+          which = 3
+            var text = document.getElementById("module_text");
+            var label = document.getElementById("ways_pays_label");
+            document.getElementById("keep_label_cell").style.backgroundColor = 'white';
+            document.getElementById("types_bills_cell").style.backgroundColor = 'white';
+            document.getElementById("ways_pays_cell").style.backgroundColor = 'lightgreen';
+            document.getElementById("reduce_cell").style.backgroundColor = 'white';
+
+            var content = ["<h2>Cash</h2><ul type='disc'><li>Pay In Person -  Contact the companies to which you routinely pay bills, such as utilities and phone companies. Ask if they have a local office that accepts cash payments. Be sure to ask for a receipt when you pay so you have proof that someone received your payment. While many companies accept cash payments in person, not all do so for free. For example, if you visit certain wireless phone retailers to pay a bill, you might have to fork over an additional processing fee.</li>","<h2>Cash</h2><ul type='disc'><li>Mail A Money Order - You can get money orders at post offices, convenience stores, major grocery stores and certain banks for a small fee, usually $1 or $2. Specify the exact amount of the bill when purchasing the money order. Fill out the payee information and sign it right away. Be sure to write your full name, address and account number on the money order, and include a payment stub in the envelope so that your payment gets properly applied to your account. Also, keep your portion of the money order so you can get a new one if it gets lost in the mail. Avoid mailing cash to pay a bill. It might end up in someone else’s pocket other than the company you’re trying to pay.</li>","<h2>Cheque</h2><ul type='disc'><li>A cheque is a written 'order to pay', which you sign and give to another party as payment. When you pay using a cheque, you are instructing your financial institution to give money from your account to the person (or organization) that is depositing the cheque.</li>","<h2>Tips to fill in a cheque</h2><ol type='disc'><li>If you're using a computer to do this, use a minimum 10 point font and dark ink colours that will show up well in images.</li><li>You should ensure that you have sufficient funds in your account to cover the cheques that you write. It's a good idea to keep a record of the cheques you write so you know which ones have been deposited and which ones are still outstanding.</li><li>Use a pen with black or blue ink whenever you write a check. If you use a pencil, anybody with an eraser can change the amount of your check and the name of the payee.</li><li>When you’re filling in the dollar amount, make sure you print the value in a way that prevents scammers from adding to it. Do this by starting at the far left edge of the space, and draw a line after the last digit.</li><li>If you want a paper record of every check you write, get checkbooks with carbon copies. Those checkbooks feature a thin sheet containing a copy of every check you write.</li>","<h2>Filling in a Cheque</h2><ol type='disc'><li>Current date: Write this near the top right-hand corner. In most cases, you’ll use today’s date, which helps you and the recipient keep accurate records.</li><li>Payee: On the line that says 'Pay to the order of,' write the name of the person or organization you’re paying.</li><li>Amount in numeric form: Write the amount of your payment in the small box on the right-hand side. Start writing as far over to the left as possible.</li><li>Amount in words: Write out the amount using words to avoid fraud and confusion. This will be the official amount of your payment.</li><li>Signature: Sign the check legibly on the line in the bottom-right corner. Use the same name and signature on file at your bank. A check will not be valid without a signature.</li><li>Memo (or 'For') line: If you like, include a note. This step is optional and will not affect how banks process your check.</li><li>After you write the check, make a record of the payment. Recording the payment prevents you from spending the money twice—the funds will still show as available in your account until after the check is deposited or cashed.</li>","<h2>Stale-dated cheques</h2><ul type='disc'><li>Cheques are considered stale-dated after six months, unless certified. A stale-dated cheque simply means that the item is old, and not necessarily invalid. Financial institutions may still honour these items, but there is no obligation to do</li>","<h2>Post-dated cheques</h2><ul type='disc'><li>Cheques should not be deposited before their due date. If you notice that a post-dated cheque is cashed early, you can ask that your financial institution return it, up to and including the day before the date on the cheque.</li>","<h2>Direct debit</h2><ul type='disc'><li>With a direct debit, you give someone else approval to take payments from your bank account electronically. Because you don't have to do anything, a direct debit reduces your chances of missing a payment.</li>","<h2>Direct debit common usage</h2><ul type='disc'><li>Regular bills for variable amounts - With Direct Debit you know all your important bills will be paid on time each month. In 2011 2.4bn payments were made by Direct Debit for utility bills and council taxes.</li><li>Fixed subscriptions or memberships - Direct Debit is the safest and easiest way to make recurring payments like magazine subscriptions or gym memberships.</li><li>Paying on account – Some organisations will provide Direct Debit as an option for spreading your costs or paying on account.</li><li>One-off payment - While Direct Debit is usually associated with regular and recurring payments, it can also be used for one-off payments. Direct Debit should not be used for one-off payments where instant transfer of funds is needed, like e-commerce. However, if the organisation you're paying doesn't need the money immediately, Direct Debit can be a great option.</li>","<h2>Direct debit set up</h2><ul type='disc'><li>Give approval for the direct debit to be set up</li><li>Let the business know if your bank account details change</li><li>Make sure you have enough money in your account for each payment.</li>","<h2>Your direct debit rights</h2><ul type='disc'><li>The business you are paying must let you know in advance the amount and date the payment will occur.</li><li>A direct debit is organised with your bank. The bank needs a signed authorisation from you to set up a direct debit.</li><li>The bank must act on your instructions if you ask them to cancel or change the direct debit. You don't need approval from the business you are paying to cancel a direct debit, but you should let them know. You still have to pay any money you owe another way.</li><li>If you lose money because your bank didn't cancel a direct debit authority when you asked them to, you might be entitled to compensation. This could include a refund for overdraft fees or penalty interest.</li>","<h2>Benefits to direct debit</h2><ul type='disc'><li>Convenience - Payments are automatic, so bills are never forgotten, lost or delayed.</li><li>Cost - Businesses may offer incentives for paying by Direct Debit.</li><li>Customer Protection – Direct Debit is one the safest payment methods.</li>","<h2>If there is not enough money in your account to make a payment, the bank can:</h2><ul type='disc'><li>make the payment anyway and charge you overdraft fees or interest</li><li>dishonour the payment — you will have to organise payment separately, and you might be charged a dishonour fee by the bank.What are the important Direct Debit scheme rules that I should know?</li>"]
+            text.innerHTML = content[counter[2]-1];
+            if (counter[2] > content.length){
+              counter[2] = content.length
+              document.getElementById("ways_pays_label").style.backgroundColor = 'lightgreen';
+              reduce_bill_expenses()
+            }
+            label.innerHTML = `${counter[2]}/${content.length}`
+        }
+        function reduce_bill_expenses() {
+          which = 4
+            var text = document.getElementById("module_text");
+            var label = document.getElementById("reduce_label");
+            document.getElementById("keep_label_cell").style.backgroundColor = 'white';
+            document.getElementById("types_bills_cell").style.backgroundColor = 'white';
+            document.getElementById("ways_pays_cell").style.backgroundColor = 'white';
+            document.getElementById("reduce_cell").style.backgroundColor = 'lightgreen';
+
+            var content = ["reduce bill expense","reduce bill expenses 2"]
+            text.innerHTML = content[counter[3]-1];
+            if (counter[3] > content.length){
+              counter[3] = content.length
+              document.getElementById("reduce_label").style.backgroundColor = 'lightgreen';
+              quiz()
+            }
+            label.innerHTML = `${counter[3]}/${content.length}`
+        }
+        function next() {
+          if ((document.getElementById("keep_label").style.backgroundColor == 'lightgreen') && (document.getElementById("types_bills_label").style.backgroundColor == 'lightgreen') && (document.getElementById("ways_pays_label").style.backgroundColor == 'lightgreen') && (document.getElementById("reduce_label").style.backgroundColor == 'lightgreen')){
+            document.getElementById("quiz").style.backgroundColor = 'white';
+          }
+          if (which == 1){
+            counter[0] = counter[0] + 1
+            document.getElementById("keep_label_cell").style.backgroundColor = 'lightgreen';
+            document.getElementById("types_bills_cell").style.backgroundColor = 'white';
+            document.getElementById("ways_pays_cell").style.backgroundColor = 'white';
+            document.getElementById("reduce_cell").style.backgroundColor = 'white';
+            // document.getElementById("quiz").style.backgroundColor = 'white';
+
+            keeping_track()
+          }
+          else if (which == 2){
+            counter[1] = counter[1] + 1
+            document.getElementById("keep_label_cell").style.backgroundColor = 'white';
+            document.getElementById("types_bills_cell").style.backgroundColor = 'lightgreen';
+            document.getElementById("ways_pays_cell").style.backgroundColor = 'white';
+            document.getElementById("reduce_cell").style.backgroundColor = 'white';
+            // document.getElementById("quiz").style.backgroundColor = 'white';
+
+            types_bills()
+          }
+          else if (which == 3){
+            counter[2] = counter[2] + 1
+            document.getElementById("keep_label_cell").style.backgroundColor = 'white';
+            document.getElementById("types_bills_cell").style.backgroundColor = 'white';
+            document.getElementById("ways_pays_cell").style.backgroundColor = 'lightgreen';
+            document.getElementById("reduce_cell").style.backgroundColor = 'white';
+            // document.getElementById("quiz").style.backgroundColor = 'white';
+
+            ways_pays_bill()
+          }
+          else if (which == 4){
+            counter[3] = counter[3] + 1
+            document.getElementById("keep_label_cell").style.backgroundColor = 'white';
+            document.getElementById("types_bills_cell").style.backgroundColor = 'white';
+            document.getElementById("ways_pays_cell").style.backgroundColor = 'white';
+            document.getElementById("reduce_cell").style.backgroundColor = 'lightgreen';
+            // document.getElementById("quiz").style.backgroundColor = 'white';
+
+            reduce_bill_expenses()
+          }
+          else if (which == 5){
+            document.getElementById("keep_label_cell").style.backgroundColor = 'white';
+            document.getElementById("types_bills_cell").style.backgroundColor = 'white';
+            document.getElementById("ways_pays_cell").style.backgroundColor = 'white';
+            document.getElementById("reduce_cell").style.backgroundColor = 'white';
+            // document.getElementById("quiz").style.backgroundColor = 'lightgreen';
+            quiz()
+          }
+        }
+        function backwards() {
+        if ((which == 1) && (counter[0] > 1)){
+            counter[0] = counter[0] - 1
+            keeping_track()
+        }
+        else if ((which == 2) && (counter[1] > 1)){
+            counter[1] = counter[1] - 1
+            types_bills()
+        }
+        else if ((which == 3) && (counter[2] > 1)){
+            counter[2] = counter[2] - 1
+            ways_pays_bill()
+        }
+        else if ((which == 4) && (counter[3] > 1)){
+            counter[3] = counter[3] - 1
+            reduce_bill_expenses()
+        }
+      }
+      function quiz(){
+        which = 5
+        if ((document.getElementById("keep_label").style.backgroundColor == 'lightgreen') && (document.getElementById("types_bills_label").style.backgroundColor == 'lightgreen') && (document.getElementById("ways_pays_label").style.backgroundColor == 'lightgreen') && (document.getElementById("reduce_label").style.backgroundColor == 'lightgreen')){
+          counterq = counterq + 1
+          document.getElementById("keep_label_cell").style.backgroundColor = 'white';
+          document.getElementById("types_bills_cell").style.backgroundColor = 'white';
+          document.getElementById("ways_pays_cell").style.backgroundColor = 'white';
+          document.getElementById("reduce_cell").style.backgroundColor = 'white';
+          document.getElementById("quiz").style.backgroundColor = 'lightgreen';
+
+          var text = document.getElementById("module_text");
+          var content = ["question 1","question 2"]
+          text.innerHTML = content[counterq-1];
+        }
+      }
+        
+    </script>
+<style>
+.unselectable {
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor:pointer;
+}
+</style>
+{% endblock content %}
+<!-- for clickable, put counter in for loop, put button at bottom of content, set up array for content diplay -->
