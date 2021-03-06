@@ -24,7 +24,7 @@
       <tr>
         <td class="tg-baqh" onclick="what_is()" id="what_is_cell"><div class="unselectable">What is an RESP?</div></td>
         <td class="tg-0pky" id="what_is_label">1/3</td>
-        <th height=500px class="tg-0lax" rowspan="6" onclick="next()" style="vertical-align: top;"><div id="module_text" class="unselectable"> </div></th>
+        <th height=500px class="tg-0lax" rowspan="5" colspan="3"onclick="next()" style="vertical-align: top;"><div id="module_text" class="unselectable"> </div></th>
       </tr>
       <tr>
         <td class="tg-baqh" onclick="how_work()" id="how_work_cell"><div class="unselectable">How do RESPs work?</div></td>
@@ -48,31 +48,20 @@
           <div class="unselectable">
             <th class="tg-0lax" id="quiz" onclick="quiz()" style="background-color: grey;">Quiz</th>
           </div>
-          <td class="tg-0pky" id="score_cell">{{ score }}</td>
+          <td class="tg-0pky"></td>
           <td class="tg-0lax" onclick="backwards()"><button class="unselectable">Previous</button></td>
           <td class="tg-0lax" onclick="next()"><button class="unselectable">Next</button></td>
-          <td class="tg-0lax">Progress Bar?</td>
+          <td class="tg-0lax"></td>
         </tr>
       </tbody>
       </table>
     </div>
-    <button onclick="increase()">asdasd</button>
-    <h1 id="scoring"></h1>
-    <!-- {% macro increase() %}
-      {% set score = score + 1 %}
-      <h1 class="asd" id="asd">{{ score }}</h1>
-    {% endmacro %}
-    
-    <h1>{{ increase() }}</h1>
-    <h1>{{ score }}</h1> -->
-
 
     <script>
       let counter = [1,1,1,1,1];
       let counterq = 0;
       let finished = [0,0,0,0];
       let which = 0;
-      var score = '{{ score }}';
 
         function what_is() {
           which = 1
@@ -218,6 +207,15 @@
             document.getElementById("using_cell").style.backgroundColor = 'lightgreen';
             using()
           }
+          else if (which == 6){
+            counterq = counterq + 1
+            document.getElementById("what_is_cell").style.backgroundColor = 'white';
+            document.getElementById("how_work_cell").style.backgroundColor = 'white';
+            document.getElementById("how_get_cell").style.backgroundColor = 'white';
+            document.getElementById("opening_cell").style.backgroundColor = 'white';
+            document.getElementById("using_cell").style.backgroundColor = 'white';
+            quiz()
+          }
         }
         function backwards() {
         if ((which == 1) && (counter[0] > 1)){
@@ -240,12 +238,14 @@
             counter[4] = counter[4] - 1
             using()
         }
+        else if ((which == 6) && (counterq > 1)){
+            counterq = counterq - 1
+            quiz()
       }
+    }
       function quiz(){
-        which = 5
-        
+        which = 6
         if ((document.getElementById("what_is_label").style.backgroundColor == 'lightgreen') && (document.getElementById("how_work_label").style.backgroundColor == 'lightgreen') && (document.getElementById("how_get_label").style.backgroundColor == 'lightgreen') && (document.getElementById("opening_label").style.backgroundColor == 'lightgreen') && (document.getElementById("using_label").style.backgroundColor == 'lightgreen')){
-          counterq = counterq + 1
           document.getElementById("what_is_cell").style.backgroundColor = 'white';
           document.getElementById("how_work_cell").style.backgroundColor = 'white';
           document.getElementById("how_get_cell").style.backgroundColor = 'white';
@@ -254,15 +254,10 @@
           document.getElementById("quiz").style.backgroundColor = 'lightgreen';
 
           var text = document.getElementById("module_text");
-          var content = ["question 1"]         
-          text.innerHTML = "<p>Please select your gender:</p><input type='radio' id='male' name='gender' value='male'><label for='male'>Male</label><br><input type='radio' id='female' name='gender' value='female'><label for='female'>Female</label><br>"
-          // text.innerHTML = 
+          text.innerHTML = "<button class='btn'><a class='nav-item nav-link''>Begin the quiz</a></button>";
         }
       }
-      function increase(){
-        score = score + 1
-        document.getElementById("scoring").innerHTML = score
-      }
+
     </script>
 <style>
 .unselectable {

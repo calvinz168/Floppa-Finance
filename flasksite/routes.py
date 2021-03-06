@@ -7,7 +7,7 @@ from PIL import Image
 
 from flasksite import app, bcrypt, db
 from flasksite.forms import (LoginForm, PostForm, RegistrationForm,
-                             UpdateAccountForm,CommentForm)
+                             UpdateAccountForm,CommentForm,QuizForm)
 from flasksite.models import Post, User, Comment
 
 
@@ -126,9 +126,10 @@ def new_post():
 def comment_post(post_id):
     post = Post.query.get_or_404(post_id)
     form = CommentForm()
+    #user_id = User.query.get(current_user.id)
     if request.method == 'POST': # this only gets executed when the form is submitted and not when the page loads
         if form.validate_on_submit():
-            comment = Comment(content=form.body.data, post_id=post.id)
+            comment = Comment(content=form.body.data, post_id=post.id, user_id=current_user.id)
             db.session.add(comment)
             db.session.commit()
             flash("Your comment has been added to the post", "success")
@@ -139,7 +140,6 @@ def comment_post(post_id):
 @app.route("/post/<int:post_id>")
 def post(post_id):
     post = Post.query.get(post_id)
-    print(post_id)
     comments = Comment.query.filter_by(post_id=post_id).all()
     return render_template('post.html', title=post.title, post=post, comments=comments)
 
@@ -174,3 +174,52 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('home'))
+
+
+@app.route('/test', methods=['POST', 'GET'])
+def test():
+    form = QuizForm()
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            print("form.example.data",form.example.data)
+        else:
+            print("form.errors",form.errors)
+    print("ASD")
+    return render_template('htmltest.html', form=form)
+
+
+@app.route('/pbQuiz',methods=['POST','GET'])
+@login_required
+def pbQuiz():
+    form = QuizForm()
+    q1w = True
+    q2w = True
+
+    if request.method == 'POST':
+        button = False
+        marks = 0
+        print("current_user.score",current_user.score)
+        if form.validate_on_submit():
+            print("form.q1.data",form.q1.data)
+            print("form.q2.data",form.q2.data)
+            if form.q1.data == "q1value4":
+                current_user.score += 10
+                marks += 1
+                q1w = False
+            if form.q2.data == "q2value2":
+                current_user.score += 10
+                marks += 1
+                q2w = False
+            db.session.commit()
+            if marks > 1:
+                flash(f"Congratulations! You have scored {marks}/2", "success")
+            else:
+                flash(f"You have scored {marks}/2", "danger")
+        else:
+            print("form.errors",form.errors)
+    if request.method == "GET":
+        button =  True
+
+
+    print("current_user.score",current_user.score)
+    return render_template('paying_bills_quiz.html', form=form, butt=button,q1w=q1w,q2w=q2w)

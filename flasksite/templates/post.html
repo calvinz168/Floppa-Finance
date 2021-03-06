@@ -5,6 +5,7 @@
     <div class="media-body">
       <div class="article-metadata">
         <a class="mr-2" href="#">{{ post.author.username }}</a>
+        <em><small class="font-italic">{{ post.author.score }}</small></em>
         <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
         {% if post.author == current_user %}
           <div>
@@ -18,24 +19,24 @@
     </div>
   </article>
 
-
-  <h2>Comments</h2>
+  <table>
+  <td><h2>Comments</h2><a href="{{ url_for('comment_post', post_id=post.id) }}"><button class="btn btn-outline-info">Add A Comment</button></a></td>
+  </table>
+  <br>
   {% for comment in comments %}
     <article class="media content-section">
-      <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+      <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + comment.author.image_file) }}">
       <div class="media-body">
         <div class="article-metadata">
-          <a class="mr-2" href="#">{{ post.author.username }}</a>
-          <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+          <a class="mr-2" href="#">{{ comment.author.username }}</a>
+          <em><small class="font-italic">{{ comment.author.score }}</small></em>
+          <small class="text-muted">{{ comment.date_posted.strftime('%Y-%m-%d') }}</small>
         </div>
-        <h2 class="article-title">{{ comment.author }}</h2>
         <p class="article-content">{{ comment.content }}</p>
       </div>
     </article>
   {% endfor %}
  
-
-
   <!-- Modal -->
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">

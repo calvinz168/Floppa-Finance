@@ -1,0 +1,98 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="content-section">
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <fieldset class="form-group">            
+            <legend class="border-bottom mb-4">Paying Bills Quiz</legend>
+
+            {% if butt %}
+            <div class="form-group">
+                {{ form.q1.label(class="form-control-label") }}
+                {% if form.q1.errors %}
+                    {{ form.q1(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.q1.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.q1(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.q2.label(class="form-control-label") }}
+                {% if form.q2.errors %}
+                    {{ form.q2(class="form-control form-control-lg is-invalid") }}
+                    <div class="invalid-feedback">
+                        {% for error in form.q2.errors %}
+                            <span>{{ error }}</span>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    {{ form.q2(class="form-control form-control-lg") }}
+                {% endif %}
+            </div>
+
+
+
+            {% else %}
+                <div class="form-group">
+                    {{ form.q1.label(class="form-control-label") }}
+                    {% if q1w %}
+                        {{ form.q1(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.q1.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                            <span>The correct answer is: "Coconut"</span>
+                        </div>
+                    {% else %}
+                        {{ form.q1(class="form-control form-control-lg is-valid") }}
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.q2.label(class="form-control-label") }}
+                    {% if q2w %}
+                        {{ form.q2(class="form-control form-control-lg is-invalid") }}
+                        <div class="invalid-feedback">
+                            {% for error in form.q2.errors %}
+                                <span>{{ error }}</span>
+                            {% endfor %}
+                            <span>The correct answer is: "A compulsory financial charge"</span>
+                        </div>
+                    {% else %}
+                        {{ form.q2(class="form-control form-control-lg is-valid") }}
+                    {% endif %}
+                </div>
+        {% endif %}
+        </fieldset>
+
+
+
+        <div class="form-group" id="sub_button">
+            {% if butt %}
+                {{ form.submit(class="btn btn-outline-info") }}
+            {% endif %}
+        </div>
+    </form>
+</div>
+
+<!-- <script>
+function disable(){
+    if( "{{ butt }}" == "False"){
+        console.log("{{ butt }}")
+        var btn = document.getElementById("sub_button");
+        btn.disabled = true;
+    }
+    else{
+        console.log("{{ butt }}")
+        var btn = document.getElementById("sub_button");
+        btn.disabled = false;
+
+}
+}
+</script> -->
+
+
+{% endblock content %}

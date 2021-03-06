@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileAllowed
 from flask_login import current_user
-from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextAreaField, RadioField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from flasksite.models import User
 
@@ -64,3 +64,8 @@ class PostForm(FlaskForm):
 class CommentForm(FlaskForm):
     body = StringField("Body", validators=[DataRequired()])
     submit = SubmitField("Post")
+
+class QuizForm(FlaskForm):
+    q1 = RadioField('What is not a benefit of direct debit?', choices=[('q1value1', 'Convenience'), ('q1value2', 'Cost'), ('q1value3', 'Customer Protection'), ('q1value4', 'Coconut')])
+    q2 = RadioField('What are taxes?', choices=[('q2value1', 'My neighbor Jeremiah'), ('q2value2', 'A compulsory financial charge'), ('q2value3', 'The thing that squirrels eat'), ('q2value4', 'Special Type of kangaroo')])
+    submit = SubmitField("Submit")
