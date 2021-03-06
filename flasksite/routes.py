@@ -212,9 +212,9 @@ def pbQuiz():
                 q2w = False
             db.session.commit()
             if marks > 1:
-                flash(f"Congratulations! You have scored {marks}/2", "success")
+                flash(f"Congratulations! You have scored {marks}/2 + {marks * 10} triumph score", "success")
             else:
-                flash(f"You have scored {marks}/2", "danger")
+                flash(f"You have scored {marks}/2  + {marks * 10} triumph score", "danger")
         else:
             print("form.errors",form.errors)
     if request.method == "GET":
