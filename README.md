@@ -8,7 +8,7 @@ The Floppa Finance web application uses a Python backend and HTML/CSS frontend, 
 
 # Next Steps
 We are very happy to have been awarded the RBC company challenge award for helping make financial services more accessible, and hope to continue working on and developing this project, possibly publishing it. Some features we would like to develop and implement in the future are: 
-* To expand the number of modules and quizzes developed 
+* Expand the number of modules and quizzes developed 
 * Integrate a more stable database for storing and moderating data
 * Redesign the layout to have a greater user experience
 
