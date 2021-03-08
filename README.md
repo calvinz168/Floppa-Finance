@@ -1,5 +1,3 @@
-﻿﻿# Floppa-Finance
-
 # Overview
 Floppa Finance is a project developed by Team Big Floppas - Calvin Zheng, Vivian Ren, Caleb Wong, and Caitlin Lee, for the Tech Under 20 Cup Business competition. Designed to help educate youth about finance, we designed a web-based system where users are able to learn about finance through 'modules' presented in interactive slideshows, as well as interact with others through discussion posts and comments on the community page.
 
