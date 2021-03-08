@@ -23,24 +23,24 @@
       <thead>
       <tr>
         <td class="tg-baqh" onclick="what_is()" id="what_is_cell"><div class="unselectable">What is an RESP?</div></td>
-        <td class="tg-0pky" id="what_is_label">1/3</td>
+        <td class="tg-0pky" id="what_is_label">1/1</td>
         <th height=500px class="tg-0lax" rowspan="5" colspan="3"onclick="next()" style="vertical-align: top;"><div id="module_text" class="unselectable"> </div></th>
       </tr>
       <tr>
         <td class="tg-baqh" onclick="how_work()" id="how_work_cell"><div class="unselectable">How do RESPs work?</div></td>
-        <td class="tg-0pky" id="how_work_label">1/2</td>
+        <td class="tg-0pky" id="how_work_label">1/1</td>
       </tr>
       <tr>
         <td class="tg-baqh" onclick="how_get()" id="how_get_cell"><div class="unselectable">How do you get an RESP?</div></td>
-        <td class="tg-0pky" id="how_get_label">1/13</td>
+        <td class="tg-0pky" id="how_get_label">1/4</td>
       </tr>
       <tr>
         <td class="tg-baqh" onclick="opening()" id="opening_cell"><div class="unselectable">Opening an RESP</div></td>
-        <td class="tg-0pky" id="opening_label">1/15</td>
+        <td class="tg-0pky" id="opening_label">1/1</td>
       </tr>
       <tr>
         <td class="tg-baqh" onclick="using()" id="using_cell"><div class="unselectable">Using your RESP</div></td>
-        <td class="tg-0pky" id="using_label">1/15</td>
+        <td class="tg-0pky" id="using_label">1/3</td>
       </tr>
       </thead>
       <tbody>
@@ -73,7 +73,8 @@
             document.getElementById("opening_cell").style.backgroundColor = 'white';
             document.getElementById("using_cell").style.backgroundColor = 'white';
 
-            var content = ["what is 1","what is 2","what is 3"]
+            var content = ["<ul type='disc'><li>What is an RESP?<ul type='disc'><li>An RESP is a tax-preferred savings plan designed to help you save for post-secondary schooling. With an RESP, the government will match 20% of your parent or guardian’s annual contributions up to $500 per year (with a lifetime maximum of $7,200). That’s more than seven grand in free money – plus whatever investment growth that money generates while it’s in the plan.</li></ul></li></ul>"]
+
             text.innerHTML = content[counter[0]-1];
             if (counter[0] > content.length){
               counter[0] = content.length
@@ -92,7 +93,8 @@
             document.getElementById("opening_cell").style.backgroundColor = 'white';
             document.getElementById("using_cell").style.backgroundColor = 'white';
 
-            var content = ["how work 1", "how work 2"]
+            var content = ["<ul type='disc'><li>How do RESPs work?<ul type='disc'><li>A subscriber enters into an RESP contract with the promoter and names one or more beneficiaries under the plan</li><li>The subscriber makes contributions to the RESP. Government grants (if applicable) will be paid to the RESP. These grants can be the Canada Education Savings Grant (CESG), Canada Learning Bond (CLB), or any designated provincial education savings program</li><li>The promoter of the RESP administers all amounts paid into the RESP. As long as the income stays in the RESP, it is not taxable. The promoter also makes sure payments from the RESP are made according to the terms of the RESP</li><li>The promoter can return the subscriber's contributions tax-free</li><li>The promoter can make payments to the beneficiary to help finance his or her post-secondary education</li><li>The promoter can make accumulated income payments</li></ul></li></ul>"]
+
             text.innerHTML = content[counter[1]-1];
             if (counter[1] > content.length){
               counter[1] = content.length
@@ -111,7 +113,8 @@
             document.getElementById("opening_cell").style.backgroundColor = 'white';
             document.getElementById("using_cell").style.backgroundColor = 'white';
             
-            var content = ["how get 1","how get 2","how get 3"]
+            var content = ["<ul type='disc'><li>How do you get an RESP?<ul type='disc'><li>Find a plan: Anyone—parents, grandparents, other family members and friends—can open an RESP for you. RESPs can be opened by one person, or opened jointly by spouses or common-law partners. They can also be opened by child-care agencies. While an adult opens a plan for you, they can also name themselves or another adult as the beneficiary. There are three types of plans:</li></ul></li></ul>","<ul type='disc'><li>Family Plan<ul type='disc'><li>A family plan is ideal if your family has more than one child. One or more children receive the savings when it is time to pay for their studies after high school. The children must be related, either by blood or adoption. Under the Income Tax Act, a “blood relationship” is that of a parent and child (or grandchild or great-grandchild), or that of a brother and sister. Nieces, nephews, aunts, uncles and cousins are not considered blood relatives. Also, you cannot be considered a blood relative of yourself. The advantage of a family plan is that earnings can be shared among the children, and the Canada Education Savings Grant may be used by any beneficiary named in the RESP, to a maximum of $7,200. The Additional Canada Education Savings Grant and the Canada Learning Bond can be paid only if all the beneficiaries in the plan are siblings.</li></ul></li></ul>","<ul type='disc'><li>Individual (non-family) plan<ul type='disc'><li>This type of plan is ideal if the parent is not related to the child they are saving for. In this type of plan, only one beneficiary is named in the RESP, and the beneficiary does not have to be related to the adult. One can open this type of RESP for themselves or for another adult; however, the Canada Education Savings Grant and the Canada Learning Bond can be paid only to eligible beneficiaries.</li></ul></li></ul>","<ul type='disc'><li>Group plan<ul type='disc'><li>A group plan is for one child only, and the child does not have to be related to the adult. A group plan is ideal if you can make regular payments throughout the term of the RESP. In this type of plan, your savings are combined with those of other people. How much each child gets depends on how much money is in the group account, and on the number of students of the same age who are in school that year. These plans are provided by group plan dealers who usually invest the money in low-risk investments. Each group plan is different and has its own rules. As you would with any investment, be sure to read the plan rules carefully. Usually, you will be asked to commit to making regular payments into the plan over a certain period of time. Fees may apply if you stop these regular payments. Group plans are a good option if you prefer to have someone decide how to invest the money for you and you are fairly certain the child will continue his or her education after high school. Ask your group plan dealer for details.</li></ul></li></ul>"]
+
             text.innerHTML = content[counter[2]-1];
             if (counter[2] > content.length){
               counter[2] = content.length
@@ -130,7 +133,8 @@
             document.getElementById("opening_cell").style.backgroundColor = 'lightgreen';
             document.getElementById("using_cell").style.backgroundColor = 'white';
 
-            var content = ["opening 1","opening 2"]
+            var content = ["<ul type='disc'><li>Open an RESP<ul type='disc'><li>The child and adult must get a Social Insurance Number (SIN). There is no fee; however, certain documents, such as birth certificates, are required. Choose an RESP provider that best suits your needs. Most financial institutions (such as banks and credit unions), as well as certified financial planners and group plan dealers, provide RESPs. https://www.canada.ca/en/employment-social-development/services/student-financial-aid/education-savings/resp/resp-promoters-list.html</li></ul></li></ul>"]
+
             text.innerHTML = content[counter[3]-1];
             if (counter[3] > content.length){
               counter[3] = content.length
@@ -149,7 +153,8 @@
             document.getElementById("opening_cell").style.backgroundColor = 'white';
             document.getElementById("using_cell").style.backgroundColor = 'lightgreen';
 
-            var content = ["using 1","using 2"]
+            var content = ["<ul type='disc'><li>Request an Educational Assistance Payment on behalf of the student<ul type='disc'><li>Once the child (the RESP beneficiary) has graduated from high school and enrolled full-time or part-time in a qualifying post-secondary educational program, the adult can request, on his or her behalf, to withdraw money from the RESP to help pay for their studies. When you withdraw government payments or interest earned from an RESP account, that money is called an Educational Assistance Payment. Educational Assistance Payments include the interest earned in the RESP as well as any Canada Education Savings Grants, provincial grants and Canada Learning Bonds received. You can use this money to pay for post-secondary school expenses like tuition, books and transportation.</li></ul></li></ul>","<ul type='disc'><li>Provide required documentation to support your request<ul type='disc'><li>To withdraw money from an RESP, contact your RESP provider. They will ask to see official proof of enrollment before issuing the Educational Assistance Payment. They may also provide you with a list of allowable expenses that the money can be used for, or they may ask for receipts for school purchases to prove the money is being spent on allowable educational expenses. Because they are responsible for administering the RESP in accordance with the Income Tax Act, your RESP provider determines what is considered a “reasonable” expense (i.e. one that can be paid for with the savings). Any expense that is in accordance with the Act and the terms of the plan would be considered reasonable. One way to decide if a school expense is reasonable is to ask yourself whether or not this purchase will serve to further studies.</li></ul></li></ul>","<ul type='disc'><li>Minimum duration of a qualifying educational program<ul type='disc'><li>Full-time program in Canada: A course of study that lasts at least three weeks in a row, with at least 10 hours of instruction or work per week.</li><li>Full-time program outside Canada: A program at a foreign educational institution with a duration of at least 13 weeks.</li><li>Part-time program in Canada: An educational program at post-secondary school level that lasts at least three consecutive weeks, and that requires a student to spend not less than 12 hours per month on courses in the program.</li><li>Programs that qualify include apprenticeships as well as programs offered by:<ul type='disc'><li>CEGEPs;</li><li>trade schools;</li><li>Colleges;</li><li>Universities;</li><li>other institutions certified by the Minister of Employment and Social Development.</li></ul></li></ul></li></ul>"]
+
             text.innerHTML = content[counter[4]-1];
             if (counter[4] > content.length){
               counter[4] = content.length
